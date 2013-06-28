@@ -18,8 +18,9 @@ RUN apt-get install -y git curl oracle-java7-installer
 RUN mkdir /stash-home
 
 ADD stash/ /stash/
+ADD start.sh /start.sh
 
 ENV STASH_HOME /stash-home
 EXPOSE 7990
 
-CMD /stash/bin/start-stash.sh -fg
+CMD HOST=$(hostname) ./start.sh

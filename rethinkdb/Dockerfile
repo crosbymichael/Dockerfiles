@@ -16,4 +16,9 @@ RUN apt-get install -y rethinkdb
 EXPOSE 28015
 EXPOSE 8080
 
-CMD /usr/bin/rethinkdb --bind all
+# create the /rethinkdb_data dir structure
+RUN /usr/bin/rethinkdb create
+
+ENTRYPOINT ["/usr/bin/rethinkdb"]
+
+CMD ["--help"]

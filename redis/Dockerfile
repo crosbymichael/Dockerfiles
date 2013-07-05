@@ -6,4 +6,7 @@ ADD redis.conf /etc/redis/redis.conf
 
 EXPOSE 6379
 
-CMD /usr/bin/redis-server /etc/redis/redis.conf
+RUN mkdir /redis
+
+ENTRYPOINT ["/usr/bin/redis-server"]
+CMD ["/etc/redis/redis.conf"]

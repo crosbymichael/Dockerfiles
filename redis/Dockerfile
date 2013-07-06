@@ -2,11 +2,9 @@
 
 FROM johncosta/redis
 
-ADD redis.conf /etc/redis/redis.conf
-
 EXPOSE 6379
 
 RUN mkdir /redis
 
 ENTRYPOINT ["/usr/bin/redis-server"]
-CMD ["/etc/redis/redis.conf"]
+CMD ["--dir", "/redis"]

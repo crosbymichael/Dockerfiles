@@ -1,8 +1,9 @@
-# Dockerfile for rethinkdb
+# Dockerfile for Rethinkdb 
+# http://www.rethinkdb.com/
 
 FROM ubuntu
 
-MAINTAINER Michael Crosby http://crosbymichael.com
+MAINTAINER Michael Crosby <michael@crosbymichael.com>
 
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
 RUN apt-get update
@@ -13,7 +14,9 @@ RUN add-apt-repository ppa:rethinkdb/ppa
 RUN apt-get update
 RUN apt-get install -y rethinkdb
 
+# Rethinkdb process
 EXPOSE 28015
+# Rethinkdb admin console
 EXPOSE 8080
 
 # create the /rethinkdb_data dir structure

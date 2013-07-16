@@ -1,48 +1,26 @@
 import os.path
+import os
 
 CONF_ROOT = os.path.dirname(__file__)
+
+database_name = os.environ.get('SENTRY_NAME', 'sentry')
+database_user = os.environ.get('SENTRY_USER', 'sentry')
+database_password = os.environ.get('SENTRY_PASS', 'sentry')
+database_host = os.environ.get('SENTRY_HOST', '127.0.0.1')
+database_port = os.environ.get('SENTRY_PORT', '')
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'sentry',                      # Or path to database file if using sqlite3.
-        'USER': 'sentry',                      # Not used with sqlite3.
-        'PASSWORD': 'sentry',                  # Not used with sqlite3.
-        'HOST': '192.168.1.9',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'NAME': database_name,                      # Or path to database file if using sqlite3.
+        'USER': database_user,                      # Not used with sqlite3.
+        'PASSWORD': database_password,                  # Not used with sqlite3.
+        'HOST': database_host,                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': database_port,                      # Set to empty string for default. Not used with sqlite3.
     }
 }
 
-# If you're expecting any kind of real traffic on Sentry, we highly recommend configuring
-# the CACHES and Redis settings
-
-# CACHES = {
-#     'default': {
-#         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-#         'LOCATION': ['127.0.0.1:11211'],
-#     }
-# }
-
-# Buffers (combined with queueing) act as an intermediate layer between the database and
-# the storage API. They will greatly improve efficiency on large numbers of the same events
-# being sent to the API in a short amount of time.
-
-# SENTRY_USE_QUEUE = True
-# For more information on queue options, see the documentation for Celery:
-# http://celery.readthedocs.org/en/latest/
-# BROKER_URL = 'redis://localhost:6379'
-
-# SENTRY_BUFFER = 'sentry.buffer.redis.RedisBuffer'
-# SENTRY_BUFFER_OPTIONS = {
-#     'hosts': {
-#         0: {
-#             'host': '127.0.0.1',
-#             'port': 6379,
-#         }
-#     }
-# }
-
-SENTRY_KEY = '333dkdslyvBUGWq5bcnW9d1MZQ82qmPZB4pskKS3223fdBfuhySw=='
+SENTRY_KEY = os.environ.get('SENTRY_KEY', '333dkdslyvBUGWq5bcnW9d1MZQ82qmPZB4pskKS3223fdBfuhySw==')
 
 # Set this to false to require authentication
 SENTRY_PUBLIC = False

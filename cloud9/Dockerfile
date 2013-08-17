@@ -2,8 +2,6 @@
 
 FROM shykes/nodejs
 
-MAINTAINER Michael Crosby
-
 RUN apt-get update
 RUN apt-get upgrade
 

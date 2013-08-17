@@ -12,7 +12,7 @@ ENV LC_ALL en_US.UTF-8
 RUN locale-gen en_US.UTF-8
 RUN dpkg-reconfigure locales
 
-RUN apt-get install -y openssh-server git-core libxml2-dev curl python build-essential make gcc python-dev wget
+RUN apt-get install -y openssh-server git-core libxml2-dev curl python build-essential make gcc python-dev wget libsqlite3-dev sqlite3
 RUN apt-get install -y postgresql-client-9.1 postgresql-client-common libpq5
 RUN apt-get install -y libpq-dev
 
@@ -21,14 +21,3 @@ RUN python distribute_setup.py
 
 RUN wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py 
 RUN python get-pip.py
-
-RUN pip install psycopg2
-RUN pip install sentry
-
-EXPOSE 9000
-
-ADD sentry.conf.py /sentry.conf.py
-
-ENTRYPOINT ["/usr/local/bin/sentry", "--config=/sentry.conf.py"]
-
-CMD ["upgrade"]

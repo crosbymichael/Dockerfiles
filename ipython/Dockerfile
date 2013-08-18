@@ -35,4 +35,4 @@ RUN pip install ipython
 EXPOSE 8888
 
 ENTRYPOINT ["ipython"]
-CMD ["notebook", "--pylab=inline"]
+CMD ["notebook", "--pylab=inline", "--ip=*"]

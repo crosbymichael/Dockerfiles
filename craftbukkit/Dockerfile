@@ -19,4 +19,4 @@ RUN wget -O /minecraft/craftbukkit.jar http://cbukk.it/craftbukkit-beta.jar
 
 EXPOSE 25565
 
-CMD (cd /minecraft && java -Xmx1600M -Xms768M -jar craftbukkit.jar nogui)
+CMD (cd /minecraft && java -Xmx1024M -Xms768M -jar craftbukkit.jar nogui)

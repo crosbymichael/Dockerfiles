@@ -11,7 +11,7 @@ database_port = os.environ.get('SENTRY_PORT', '')
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': os.environ.get('SENTRY_ENGINE', 'django.db.backends.sqlite3'),  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': database_name,                      # Or path to database file if using sqlite3.
         'USER': database_user,                      # Not used with sqlite3.
         'PASSWORD': database_password,                  # Not used with sqlite3.

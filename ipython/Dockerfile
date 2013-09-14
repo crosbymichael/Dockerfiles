@@ -32,7 +32,7 @@ RUN pip install matplotlib
 RUN pip install pandas
 RUN pip install jinja2
 RUN pip install ipython
+
 EXPOSE 8888
 
-ENTRYPOINT ["ipython"]
-CMD ["notebook", "--pylab=inline", "--ip=*"]
+CMD ipython notebook --pylab=inline --ip=* --MappingKernelManager.time_to_dead=10 --MappingKernelManager.first_beat=3

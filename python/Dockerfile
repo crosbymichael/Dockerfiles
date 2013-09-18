@@ -16,8 +16,8 @@ RUN apt-get install -y openssh-server git-core libxml2-dev curl python build-ess
 RUN apt-get install -y postgresql-client-9.1 postgresql-client-common libpq5
 RUN apt-get install -y libpq-dev
 
-RUN wget http://python-distribute.org/distribute_setup.py 
-RUN python distribute_setup.py
+RUN wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py
+RUN python ez_setup.py
 
 RUN wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py 
 RUN python get-pip.py

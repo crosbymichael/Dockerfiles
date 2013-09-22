@@ -12,14 +12,12 @@ RUN add-apt-repository ppa:rethinkdb/ppa
 RUN apt-get update
 RUN apt-get install -y rethinkdb
 
-# Rethinkdb process
-EXPOSE 28015
-# Rethinkdb admin console
-EXPOSE 8080
+# Rethinkdb process, cluster, and webui
+EXPOSE 28015 29015 8080
 
 # create the /rethinkdb_data dir structure
 RUN /usr/bin/rethinkdb create
+VOLUME ["/rethinkdb_data"]
 
 ENTRYPOINT ["/usr/bin/rethinkdb"]
-
 CMD ["--help"]

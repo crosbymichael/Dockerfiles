@@ -15,9 +15,7 @@ RUN apt-get install -y rethinkdb
 # Rethinkdb process, cluster, and webui
 EXPOSE 28015 29015 8080
 
-# create the /rethinkdb_data dir structure
-RUN /usr/bin/rethinkdb create
-VOLUME ["/rethinkdb_data"]
-
+VOLUME ["/rethinkdb"]
+WORKDIR /rethinkdb
 ENTRYPOINT ["/usr/bin/rethinkdb"]
 CMD ["--help"]

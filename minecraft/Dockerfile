@@ -13,7 +13,6 @@ RUN apt-get install -y oracle-java7-installer wget
 
 RUN mkdir /minecraft
 RUN wget -O /minecraft/minecraft.jar https://s3.amazonaws.com/Minecraft.Download/versions/1.7.4/minecraft_server.1.7.4.jar
-RUN chmod +x /minecraft/minecraft.jar
 
 EXPOSE 25565
 WORKDIR /minecraft
